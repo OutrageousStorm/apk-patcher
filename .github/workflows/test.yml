@@ -1,0 +1,20 @@
+name: APK Patcher Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          apt-get update && apt-get install -y openjdk-11-jdk
+          pip install -r requirements.txt
+      - name: Lint
+        run: python3 -m py_compile patch.py
+      - name: Check syntax
+        run: grep -E "^def |^class " patch.py
