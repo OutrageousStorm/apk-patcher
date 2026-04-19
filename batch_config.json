@@ -1,0 +1,18 @@
+{
+  "patches": [
+    {
+      "apk": "app1.apk",
+      "ssl_bypass": true,
+      "root_bypass": true,
+      "sign": true,
+      "output": "app1_patched.apk"
+    },
+    {
+      "apk": "app2.apk",
+      "ssl_bypass": true,
+      "root_bypass": false,
+      "sign": true,
+      "output": "app2_patched.apk"
+    }
+  ]
+}
